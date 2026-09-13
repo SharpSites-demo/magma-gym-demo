@@ -1,17 +1,210 @@
-/* MAGMA GYM — reveal-on-scroll (CSS transitions, IO-triggered) */
-(function () {
-  "use strict";
-  var els = document.querySelectorAll(".row, .stat, .split-copy, .visit-panel, .final-inner");
-  if (!els.length) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
-  var style = document.createElement("style");
-  style.textContent = ".rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.rv.in{opacity:1;transform:none}";
-  document.head.appendChild(style);
-  els.forEach(function (el) { el.classList.add("rv"); });
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-  els.forEach(function (el) { io.observe(el); });
-})();
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAGMA GYM — Strength Training Gym in Shastri Nagar, Ghaziabad</title>
+<meta name="description" content="MAGMA GYM, Shastri Nagar, Ghaziabad. Strength zones, cardio decks, coached classes and personal training. Open daily 5:30 AM–10 PM. Rated 4.6★ on Google.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="MAGMA GYM — Strength Training Gym in Shastri Nagar, Ghaziabad">
+<meta property="og:description" content="Strength zones, cardio decks, coached classes and personal training. Open daily 5:30 AM–10 PM.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 560 560" fill="none">
+      <circle cx="280" cy="280" r="238" stroke="#ff5a1f" stroke-opacity=".14" stroke-width="1.5"/>
+      <circle cx="280" cy="280" r="178" stroke="#ff5a1f" stroke-opacity=".2" stroke-width="1.5" stroke-dasharray="4 10"/>
+      <g stroke="#ff5a1f" stroke-opacity=".55" stroke-width="3" stroke-linecap="round">
+        <path d="M150 280h44M366 280h44"/>
+        <path d="M172 244v72M206 232v96M354 244v72M388 232v96" stroke-width="7"/>
+        <path d="M206 280h148" stroke-width="9"/>
+      </g>
+      <path d="M280 96c26 30 44 54 44 80a44 44 0 1 1-88 0c0-26 18-50 44-80Z" fill="#ff5a1f" fill-opacity=".16"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-inner">
+    <p class="hero-kicker">Shastri Nagar · Ghaziabad</p>
+    <h1>Strength has<br><span class="heat">a new address.</span></h1>
+    <p class="hero-sub">Four training zones, coached classes and trainers who correct your form — seven days a week, from 5:30 in the morning to 10 at night.</p>
+    <div class="hero-cta">
+      <a class="btn btn-heat" href="tel:+918860497915">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Call 88604 97915
+      </a>
+      <a class="btn btn-line" href="#floor">See the floor</a>
+    </div>
+    <p class="hero-proof"><span class="star" aria-hidden="true">★</span> 4.6 on Google · 79 reviews</p>
+  </div>
+  <div class="hero-cut" aria-hidden="true"></div>
+</header>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-label="What members mention in reviews">
+  <div class="ticker-track">
+    <span>Supportive trainers</span><i>◆</i><span>Hygiene</span><i>◆</i><span>Latest equipment</span><i>◆</i><span>Zumba</span><i>◆</i><span>Humble staff</span><i>◆</i><span>Quality machines</span><i>◆</i><span>Cooperative crowd</span><i>◆</i>
+    <span>Supportive trainers</span><i>◆</i><span>Hygiene</span><i>◆</i><span>Latest equipment</span><i>◆</i><span>Zumba</span><i>◆</i><span>Humble staff</span><i>◆</i><span>Quality machines</span><i>◆</i><span>Cooperative crowd</span><i>◆</i>
+  </div>
+</div>
+
+<main>
+<!-- ================= THE FLOOR ================= -->
+<section id="floor">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">The floor</p>
+      <h2>Four zones. One direction: forward.</h2>
+    </div>
+
+    <div class="rows">
+      <article class="row">
+        <span class="row-num" aria-hidden="true">01</span>
+        <div class="row-body">
+          <h3>Strength zone</h3>
+          <p>Plate-loaded machines, racks and free weights laid out so you never wait for a bench. The equipment members mention most in their reviews.</p>
+        </div>
+      </article>
+      <article class="row">
+        <span class="row-num" aria-hidden="true">02</span>
+        <div class="row-body">
+          <h3>Cardio deck</h3>
+          <p>Treadmills and machines for the warm-up, the fat-burn block, or the full session when leg day can wait.</p>
+        </div>
+      </article>
+      <article class="row">
+        <span class="row-num" aria-hidden="true">03</span>
+        <div class="row-body">
+          <h3>Class studio</h3>
+          <p>Yoga, HIIT and Zumba sessions that make showing up the easy part — energy you don't get training alone.</p>
+        </div>
+      </article>
+      <article class="row">
+        <span class="row-num" aria-hidden="true">04</span>
+        <div class="row-body">
+          <h3>Personal coaching</h3>
+          <p>One-to-one training and nutrition guidance built around your goal — first rep or fiftieth, the plan is yours.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="photo-strip" aria-label="Gym photos">
+      <div class="ph-slot"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L7 20"/></svg>[Add real gym photos]</div>
+      <div class="ph-slot"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L7 20"/></svg>[Add real gym photos]</div>
+      <div class="ph-slot"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L7 20"/></svg>[Add real gym photos]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section class="proof">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">The record</p>
+      <h2>79 reviews. The same words keep coming up.</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">4.6★</span><span class="stat-lbl">Google rating</span></div>
+      <div class="stat"><span class="stat-num">79</span><span class="stat-lbl">Google reviews</span></div>
+      <div class="stat"><span class="stat-num">5:30</span><span class="stat-lbl">AM open, daily</span></div>
+      <div class="stat"><span class="stat-num">10 PM</span><span class="stat-lbl">Close, daily</span></div>
+    </div>
+    <p class="proof-note">Members keep mentioning the trainers, the hygiene and the machines — see every review on <a href="https://www.google.com/maps/search/?api=1&query=MAGMA%20GYM&query_place_id=ChIJzx5INDbxDDkRDHARQDZ5dX0" target="_blank" rel="noopener">Google Maps</a>.</p>
+  </div>
+</section>
+
+<!-- ================= TRAIN YOUR WAY ================= -->
+<section id="train">
+  <div class="wrap split">
+    <div class="split-copy">
+      <p class="kicker">Train your way</p>
+      <h2>Early riser or night owl — the floor is open</h2>
+      <p>Doors open at 5:30 AM and close at 10 PM, every day of the week. Train before work, after dinner, or on Sunday when the crowd thins out. Lockers and showers on site mean you can head straight to work after.</p>
+      <a class="btn btn-line" href="#visit">Check hours & directions</a>
+    </div>
+    <div class="split-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400" fill="none">
+        <rect x="40" y="40" width="320" height="320" rx="24" stroke="#ff5a1f" stroke-opacity=".25" stroke-width="2"/>
+        <circle cx="200" cy="200" r="120" stroke="#ff5a1f" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="3 9"/>
+        <g stroke="#ff5a1f" stroke-width="4" stroke-linecap="round">
+          <path d="M120 200h28M252 200h28"/>
+          <path d="M136 168v64M164 156v88M236 168v64M264 156v88" stroke-width="8"/>
+          <path d="M164 200h72" stroke-width="10"/>
+        </g>
+        <path d="M200 96c14 16 24 29 24 43a24 24 0 1 1-48 0c0-14 10-27 24-43Z" fill="#ff5a1f" fill-opacity=".3"/>
+        <text x="200" y="330" text-anchor="middle" fill="#ff5a1f" fill-opacity=".5" font-family="Archivo, sans-serif" font-weight="900" font-size="26" letter-spacing="6">05:30 — 22:00</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Visit</p>
+      <h2>Walk in, or call ahead</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-panel">
+        <h3>MAGMA GYM</h3>
+        <dl class="facts">
+          <div><dt>Address</dt><dd>SH-286, opp. Saint Mary's Convent School, H Block, Shastri Nagar, Ghaziabad, Uttar Pradesh 201002</dd></div>
+          <div><dt>Hours</dt><dd>Monday – Sunday · 5:30 AM – 10:00 PM</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+918860497915">+91 88604 97915</a></dd></div>
+        </dl>
+        <a class="btn btn-heat" href="https://www.google.com/maps/search/?api=1&query=MAGMA%20GYM&query_place_id=ChIJzx5INDbxDDkRDHARQDZ5dX0" target="_blank" rel="noopener">Get directions</a>
+        <div class="map-slot">[Add Google Maps embed]</div>
+      </div>
+      <div class="visit-panel visit-cta">
+        <h3>Thinking of joining?</h3>
+        <p>Call and we'll help you pick the right zone, class and timing — then come see the floor for yourself.</p>
+        <a class="btn btn-heat" href="tel:+918860497915">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Call 88604 97915
+        </a>
+        <div class="slot">[Add membership plans & joining details]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL ================= -->
+<section class="final">
+  <div class="wrap final-inner">
+    <h2>The floor's ready.<br><span class="heat">Are you?</span></h2>
+    <p>Open daily 5:30 AM – 10 PM · SH-286, Shastri Nagar</p>
+    <a class="btn btn-heat btn-big" href="tel:+918860497915">Call 88604 97915</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p class="foot-brand">MAGMA<span>GYM</span></p>
+      <p>SH-286, opp. Saint Mary's Convent School,<br>H Block, Shastri Nagar, Ghaziabad 201002</p>
+    </div>
+    <div class="foot-right">
+      <p><a href="tel:+918860497915">+91 88604 97915</a></p>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=MAGMA%20GYM&query_place_id=ChIJzx5INDbxDDkRDHARQDZ5dX0" target="_blank" rel="noopener">Google Maps</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- floating chat button (official brand treatment) -->
+<a class="wa-float" href="https://wa.me/918860497915?text=Hi%20MAGMA%20GYM!%20I%20have%20a%20question%20about%20training%20at%20the%20gym." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+
+<script src="app.js" defer></script>
+</body>
+</html>
